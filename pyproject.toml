@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "litellm-claude-code-websearch"
+version = "0.1.0"
+description = "LiteLLM proxy callback that serves Claude Code's WebSearch tool through a LiteLLM search provider (Brave by default)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Devon Krisman", email = "git@krisman.dev" }]
+requires-python = ">=3.10"
+dependencies = ["litellm>=1.96.0"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Repository = "https://github.com/dkrisman/litellm-claude-code-websearch"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.24"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/litellm_claude_code_websearch"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
